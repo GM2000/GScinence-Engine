@@ -50,12 +50,12 @@ void createGraphicalThread(const char* WindowName)
 	//结束程序
 	glfwTerminate();
 }
-std::future<void> RenderThread;
 
 bool initGraphical(const char* WindowName)
 {
 	//创建渲染线程开始初始化和渲染
-	RenderThread = std::future<void>(std::async(createGraphicalThread, WindowName));
+	std::thread RenderThread(createGraphicalThread, WindowName);
+	RenderThread.detach();
 
 	//等待初始化结果
 	while (GraphicalState == STATE_INIT);

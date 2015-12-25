@@ -1,7 +1,7 @@
 #pragma once
 
 //±ê×¼¿â
-#include <future>
+#include <thread>
 #include <iostream>
 
 //Opengl¿â
