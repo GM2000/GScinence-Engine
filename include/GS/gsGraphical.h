@@ -1,0 +1,2 @@
+
+bool initGraphical(char* Name);

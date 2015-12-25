@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="Graphical.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="RenderManager">
+      <UniqueIdentifier>{c15fb0aa-a1e7-48a8-83b1-3579c6a819f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Init.cpp">
+      <Filter>RenderManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
