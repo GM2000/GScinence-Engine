@@ -1,39 +1,40 @@
 
 #include "Graphical.h"
 
-std::future<void> RenderThread;
+char GraphicalState = STATE_INIT;
 
-GLFWwindow* Window;
-
-void createGraphicalThread(char* WindowName)
+void createGraphicalThread(const char* WindowName)
 {
 	//初始化glfw
 	if (!glfwInit())
 	{
-		throw("ERROR:Cannot init glfw!");
+		std::cerr << "ERROR:Cannot init glfw!" << std::endl;
+		GraphicalState = STATE_ERR;
 		return;
 	}
 
 	//创建窗口模式
-	Window = glfwCreateWindow(854, 480, WindowName, NULL, NULL);
+	GLFWwindow* Window = glfwCreateWindow(854, 480, WindowName, NULL, NULL);
 
 	if (!Window)
 	{
+		std::cerr << "ERROR:Cannot create window!" << std::endl;
+		GraphicalState = STATE_ERR;
 		glfwTerminate();
-		throw("ERROR:Cannot create window!");
-		return;
-	}
-
-	//初始化glew
-	if (glewInit() != GLEW_OK)
-	{
-		throw("ERROR:Cannot init glew!");
 		return;
 	}
 
 	//切换设备上下文
 	glfwMakeContextCurrent(Window);
 
+	//初始化glew
+	if (glewInit() != GLEW_OK)
+	{
+		std::cerr << "ERROR:Cannot init glew!" << std::endl;
+		GraphicalState = STATE_ERR;
+		return;
+	}
+	GraphicalState = STATE_OK;
 	//循环
 	while (!glfwWindowShouldClose(Window))
 	{
@@ -46,14 +47,18 @@ void createGraphicalThread(char* WindowName)
 		glfwPollEvents();
 	}
 
+	//结束程序
 	glfwTerminate();
 }
+std::future<void> RenderThread;
 
-bool initGraphical(char* WindowName)
+bool initGraphical(const char* WindowName)
 {
-	//创建渲染线程并开始渲染
+	//创建渲染线程开始初始化和渲染
 	RenderThread = std::future<void>(std::async(createGraphicalThread, WindowName));
-	RenderThread.valid();
 
-	return true;
+	//等待初始化结果
+	while (GraphicalState == STATE_INIT);
+
+	return (bool)(GraphicalState - 1);
 }
