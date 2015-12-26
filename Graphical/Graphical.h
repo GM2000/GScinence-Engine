@@ -3,6 +3,8 @@
 //±ê×¼¿â
 #include <thread>
 #include <iostream>
+#include <vector>
+#include <future>
 
 //Opengl¿â
 #include <GL\glew.h>

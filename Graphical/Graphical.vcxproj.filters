@@ -2,15 +2,33 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Graphical.h" />
+    <ClInclude Include="Shader.h">
+      <Filter>ShaderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>ModelManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="RenderManager">
       <UniqueIdentifier>{c15fb0aa-a1e7-48a8-83b1-3579c6a819f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ShaderManager">
+      <UniqueIdentifier>{a2f23d27-c212-4881-9fe9-0bb959b40bfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ModelManager">
+      <UniqueIdentifier>{2a3ad936-70e6-4ebd-ae3a-cb30303d7a0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Init.cpp">
       <Filter>RenderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadShader.cpp">
+      <Filter>ShaderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>ModelManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

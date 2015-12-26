@@ -3,12 +3,12 @@
 
 char GraphicalState = STATE_INIT;
 
-void createGraphicalThread(const char* WindowName)
+void _createGraphicalThread(const char* WindowName)
 {
 	//初始化glfw
 	if (!glfwInit())
 	{
-		std::cerr << "ERROR:Cannot init glfw!" << std::endl;
+		std::cerr << "[ERROR]:Cannot init glfw!" << std::endl;
 		GraphicalState = STATE_ERR;
 		return;
 	}
@@ -18,7 +18,7 @@ void createGraphicalThread(const char* WindowName)
 
 	if (!Window)
 	{
-		std::cerr << "ERROR:Cannot create window!" << std::endl;
+		std::cerr << "[ERROR]:Cannot create window!" << std::endl;
 		GraphicalState = STATE_ERR;
 		glfwTerminate();
 		return;
@@ -30,7 +30,7 @@ void createGraphicalThread(const char* WindowName)
 	//初始化glew
 	if (glewInit() != GLEW_OK)
 	{
-		std::cerr << "ERROR:Cannot init glew!" << std::endl;
+		std::cerr << "[ERROR]:Cannot init glew!" << std::endl;
 		GraphicalState = STATE_ERR;
 		return;
 	}
@@ -54,11 +54,16 @@ void createGraphicalThread(const char* WindowName)
 bool initGraphical(const char* WindowName)
 {
 	//创建渲染线程开始初始化和渲染
-	std::thread RenderThread(createGraphicalThread, WindowName);
+	std::thread RenderThread(_createGraphicalThread, WindowName);
 	RenderThread.detach();
 
 	//等待初始化结果
 	while (GraphicalState == STATE_INIT);
 
-	return (bool)(GraphicalState - 1);
+	//返回
+	if (GraphicalState == STATE_OK)
+	{
+		return true;
+	}
+	return false;
 }
