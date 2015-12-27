@@ -3,7 +3,7 @@
 #include <iostream>
 int main()
 {
-	if (initGraphical("GSE-TEST"))
+	if (gsgInit("GSE-TEST"))
 	{
 		char cc[256];
 		while (true)

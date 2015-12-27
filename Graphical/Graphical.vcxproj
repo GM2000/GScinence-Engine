@@ -88,10 +88,12 @@
   <ItemGroup>
     <ClCompile Include="Init.cpp" />
     <ClCompile Include="LoadShader.cpp" />
+    <ClCompile Include="LoadTexture.cpp" />
     <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphical.h" />
+    <ClInclude Include="LoadTexture.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>

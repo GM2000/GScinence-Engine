@@ -1,9 +1,11 @@
 
 #include "Graphical.h"
+#include "LoadTexture.h"
 
 char GraphicalState = STATE_INIT;
 
-void _createGraphicalThread(const char* WindowName)
+//创建窗体并且加载资源
+void _gsgCreateGraphicalThread(const char* WindowName)
 {
 	//初始化glfw
 	if (!glfwInit())
@@ -35,10 +37,15 @@ void _createGraphicalThread(const char* WindowName)
 		return;
 	}
 	GraphicalState = STATE_OK;
+
+	//加载LOGO和进度条
+	int LogoTextureID = gsgLoadTexture(L"resources//Logo.png");
+
+	//加载资源
+
 	//循环
 	while (!glfwWindowShouldClose(Window))
 	{
-		//开始渲染
 
 		//交换缓存
 		glfwSwapBuffers(Window);
@@ -51,10 +58,11 @@ void _createGraphicalThread(const char* WindowName)
 	glfwTerminate();
 }
 
-bool initGraphical(const char* WindowName)
+//初始化渲染程序
+bool gsgInit(const char* WindowName)
 {
 	//创建渲染线程开始初始化和渲染
-	std::thread RenderThread(_createGraphicalThread, WindowName);
+	std::thread RenderThread(_gsgCreateGraphicalThread, WindowName);
 	RenderThread.detach();
 
 	//等待初始化结果
