@@ -40,7 +40,7 @@ void _gsgCreateGraphicalThread(const char* WindowName)
 
 	//加载LOGO和进度条
 	int LogoTextureID = gsgLoadTexture(L"resources//Logo.png");
-
+	
 	//加载资源
 
 	//循环
