@@ -14,7 +14,7 @@ int main(int argc,char *argv[])
 	std::cout << "/*    1    1    1       ------       1----     1-----    1-----  */" << std::endl;
 	std::cout << "/*                                                               */" << std::endl;
 	std::cout << "/*                                                               */" << std::endl;
-	std::cout << "/*                                 Model Conver                  */" << std::endl;
+	std::cout << "/*                                 Model Conver Start            */" << std::endl;
 	std::cout << "/*                                                               */" << std::endl;
 	std::cout << "/*                                                               */" << std::endl;
 	std::cout << "/*                                       ----Made By GM2000      */" << std::endl;
@@ -326,6 +326,27 @@ int main(int argc,char *argv[])
 			std::cout << "Find a error!" << std::endl;
 		}
 	}
+	//¹Ø±ÕÎÄ¼ş
+	SaveGMESHCheck.close();
+
 	std::cout << "Checking no error,All done!" << std::endl;
+
+	std::cout << "/*****************************************************************/" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*    1----1----1       ------       1----     1-----    1       */" << std::endl;
+	std::cout << "/*    1    1    1      -      -      1    -    1         1       */" << std::endl;
+	std::cout << "/*    1    1    1     -        -     1     1   1-----    1       */" << std::endl;
+	std::cout << "/*    1    1    1      -      -      1    -    1         1       */" << std::endl;
+	std::cout << "/*    1    1    1       ------       1----     1-----    1-----  */" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*                                 Model Conver Done             */" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*                                       ----Made By GM2000      */" << std::endl;
+	std::cout << "/*                                                               */" << std::endl;
+	std::cout << "/*   Warning!Please make sure your model just use one texture    */" << std::endl;
+	std::cout << "/*****************************************************************/" << std::endl;
+
 	while (true);
 }
