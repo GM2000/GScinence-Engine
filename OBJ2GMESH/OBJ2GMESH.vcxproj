@@ -73,6 +73,7 @@
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(SolutionDir)bin\OBJ2GMESH.$(Configuration).Tmp\</IntDir>
     <OutDir>$(SolutionDir)bin\</OutDir>
+    <TargetName>$(ProjectName)d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
