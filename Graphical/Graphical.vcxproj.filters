@@ -36,11 +36,11 @@
     <ClCompile Include="LoadShader.cpp">
       <Filter>ShaderManager</Filter>
     </ClCompile>
-    <ClCompile Include="Model.cpp">
-      <Filter>ResourcesManager\ModelManager</Filter>
-    </ClCompile>
     <ClCompile Include="LoadTexture.cpp">
       <Filter>ResourcesManager\TextureManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>ResourcesManager\ModelManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

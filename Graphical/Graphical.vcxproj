@@ -87,9 +87,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Init.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="LoadShader.cpp" />
     <ClCompile Include="LoadTexture.cpp" />
-    <ClCompile Include="Model.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphical.h" />

@@ -19,32 +19,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OBJ2GMESH", "OBJ2GMESH\OBJ2
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{84178731-D61C-40F9-ACF8-87ED29469047}.Debug|x64.ActiveCfg = Debug|Win32
 		{84178731-D61C-40F9-ACF8-87ED29469047}.Debug|x86.ActiveCfg = Debug|Win32
 		{84178731-D61C-40F9-ACF8-87ED29469047}.Debug|x86.Build.0 = Debug|Win32
-		{84178731-D61C-40F9-ACF8-87ED29469047}.Release|x64.ActiveCfg = Release|Win32
 		{84178731-D61C-40F9-ACF8-87ED29469047}.Release|x86.ActiveCfg = Release|Win32
 		{84178731-D61C-40F9-ACF8-87ED29469047}.Release|x86.Build.0 = Release|Win32
-		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Debug|x64.ActiveCfg = Debug|x64
-		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Debug|x64.Build.0 = Debug|x64
 		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Debug|x86.ActiveCfg = Debug|Win32
 		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Debug|x86.Build.0 = Debug|Win32
-		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Release|x64.ActiveCfg = Release|x64
-		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Release|x64.Build.0 = Release|x64
 		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Release|x86.ActiveCfg = Release|Win32
 		{BCF4F895-9B7D-47EC-80FB-95DB62845A6D}.Release|x86.Build.0 = Release|Win32
-		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Debug|x64.ActiveCfg = Debug|x64
-		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Debug|x64.Build.0 = Debug|x64
 		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Debug|x86.ActiveCfg = Debug|Win32
 		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Debug|x86.Build.0 = Debug|Win32
-		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Release|x64.ActiveCfg = Release|x64
-		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Release|x64.Build.0 = Release|x64
 		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Release|x86.ActiveCfg = Release|Win32
 		{3D1B5AA5-594A-459D-8C26-BB36F0311890}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
