@@ -1,9 +1,9 @@
-
+﻿
 #include <GS\gsGraphical.h>
 #include <iostream>
 int main()
 {
-	if (gsgInit("GSE-TEST"))
+	if (gsgInit("娴嬭瘯"))
 	{
 		char cc[256];
 		while (true)

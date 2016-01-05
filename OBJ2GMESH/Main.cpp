@@ -74,9 +74,9 @@ int main(int argc,char *argv[])
 	{
 		for (unsigned int i = 0; i < VerticesIndex.size(); i++)
 		{
-			VerticesIndex[i] = VerticesData[(unsigned int)VerticesIndex[i] - 1];
-			TextureIndex[i] = TextureData[(unsigned int)TextureIndex[i] - 1];
-			NormalsIndex[i] = NormalsData[(unsigned int)NormalsIndex[i] - 1];
+			VerticesIndex[i * 3] = VerticesData[(unsigned int)VerticesIndex[i] * 3 - 3];
+			TextureIndex[i] = TextureData[(unsigned int)TextureIndex[i] * 3 - 3];
+			NormalsIndex[i] = NormalsData[(unsigned int)NormalsIndex[i] * 3 - 3];
 		}
 	}
 	//获取输入路径

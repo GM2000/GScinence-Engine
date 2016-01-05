@@ -9,4 +9,4 @@ typedef struct
 	GLuint       Shader;
 } shaderInfo;
 
-int _loadShader(shaderInfo* Shaders);
+GLuint _loadShader(shaderInfo* Shaders);

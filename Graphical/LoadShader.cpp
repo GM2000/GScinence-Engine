@@ -4,7 +4,7 @@
 const char* _readShader(const char* FileName);
 
 //加载一个顶点shader
-int _loadShader(shaderInfo* Shaders)
+GLuint _loadShader(shaderInfo* Shaders)
 {
 	//检测是否为空
 	if (Shaders == NULL)
@@ -68,6 +68,22 @@ int _loadShader(shaderInfo* Shaders)
 		glAttachShader(Program, Shader);
 
 		++Entry;
+	}
+	glLinkProgram(Program);
+
+	GLint linked;
+	glGetProgramiv(Program, GL_LINK_STATUS, &linked);
+
+	if (!linked) 
+	{
+		GLsizei len;
+		glGetProgramiv(Program, GL_INFO_LOG_LENGTH, &len);
+
+		GLchar* log = new GLchar[len + 1];
+		glGetProgramInfoLog(Program, len, &len, log);
+		std::cerr << "[ERROR]:Shader linking failed: " << log << std::endl;
+		delete[] log;
+		return 0;
 	}
 	return Program;
 }

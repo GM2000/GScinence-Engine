@@ -43,8 +43,9 @@ void _gsgCreateGraphicalThread(const char* WindowName)
 	GraphicalState = STATE_OK;
 
 	//加载LOGO和进度条
-	int LogoTextureID = gsgLoadTexture(L"resources//Logo.png");
+	int LogoTextureID = gsgLoadTexture(L"resources//test.png");
 	
+	glBindTexture(GL_TEXTURE_2D, LogoTextureID);
 	//加载资源
 	model t;
 	t.loadModel("resources//T.GMesh");
@@ -64,34 +65,43 @@ void _gsgCreateGraphicalThread(const char* WindowName)
 	tt.push_back(-1.0);
 	tt.push_back(0.0);
 
+	glEnable(GL_DEPTH_TEST);
+
 	glGenVertexArrays(1, &Vao);
 	glBindVertexArray(Vao);
 
 	glGenBuffers(1, &Buffer);
 	glBindBuffer(GL_ARRAY_BUFFER,Buffer);
 
-	glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat) * tt.size(), &tt.at(0), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat) * t.size(), t.getVerticesData(), GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
 
-	shaderInfo s1[]= {
-	{ GL_VERTEX_SHADER, "GLSL\\Normail3D.vert" },
-	{ GL_FRAGMENT_SHADER, "GLSL\\Normail3D.frag" },
-	{ GL_NONE, NULL }};
+	glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * t.size(), t.getTextureData(), GL_STATIC_DRAW);
 
-	glm::mat4 GobalProjection = glm::perspective(45.0f, (GLfloat)640 / (GLfloat)480, 0.1f, 500.0f);
-	glm::mat4 Ts = glm::translate(glm::mat4(), glm::vec3(0.0, 0.0, 50.0));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(1);
+
+	shaderInfo s1[] = {
+		{ GL_VERTEX_SHADER, "GLSL\\Normail3D.vert" },
+		{ GL_FRAGMENT_SHADER, "GLSL\\Normail3D.frag" },
+		{ GL_NONE, NULL } };
 
 	GLuint shader = _loadShader(s1);
 
-	int f = glGetUniformLocation(shader, "Frustum");
-	int ttt = glGetUniformLocation(shader, "Translate");
+	glUseProgram(shader);
+
+	GLint f = glGetUniformLocation(shader, "Frustum");
+	GLint ttt = glGetUniformLocation(shader, "Translate");
+
+	glm::mat4 GobalProjection = glm::perspective(45.0f, (GLfloat)854 / (GLfloat)480, 0.1f, 500.0f);
+	glm::mat4 Ts = glm::translate(glm::mat4(), glm::vec3(0.0, 0.0, 3.0));
 
 	glUniformMatrix4fv(f, 1, GL_TRUE, glm::value_ptr(GobalProjection));
-	glUniformMatrix4fv(ttt, 1, GL_TRUE, glm::value_ptr(GobalProjection));
-	
-	glUseProgram(shader);
+	glUniformMatrix4fv(ttt, 1, GL_TRUE, glm::value_ptr(Ts));
+
+	glViewport(0, 0, 854, 480);
 
 	//循环
 	while (!glfwWindowShouldClose(Window))
