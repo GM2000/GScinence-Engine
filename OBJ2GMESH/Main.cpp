@@ -3,7 +3,7 @@
 #include <iostream>
 #include <vector>
 
-void readOBJ(const char*, std::vector<float>*, std::vector<float>*, std::vector<float>*, std::vector<float>*, std::vector<float>*, std::vector<float>*);
+void readOBJ(const char*, std::vector<float>*, std::vector<float>*, std::vector<float>*, std::vector<unsigned int>*, std::vector<unsigned int>*, std::vector<unsigned int>*);
 void saveModel(const char*, std::vector<float>*, std::vector<float>*, std::vector<float>*);
 
 int main(int argc,char *argv[])
@@ -58,9 +58,13 @@ int main(int argc,char *argv[])
 	std::vector<float> NormalsData;
 	std::vector<float> TextureData;
 
-	std::vector<float> VerticesIndex;
-	std::vector<float> NormalsIndex;
-	std::vector<float> TextureIndex;
+	std::vector<unsigned int> VerticesIndex;
+	std::vector<unsigned int> NormalsIndex;
+	std::vector<unsigned int> TextureIndex;
+
+	std::vector<float> VerticesTotal;
+	std::vector<float> NormalsTotal;
+	std::vector<float> TextureTotal;
 
 	//开始加载
 	readOBJ(FileName, &VerticesData, &NormalsData, &TextureData, &VerticesIndex, &NormalsIndex, &TextureIndex);
@@ -70,13 +74,25 @@ int main(int argc,char *argv[])
 	std::cout << "Load complete!start to Conver" << std::endl;
 
 	//转换格式
+	VerticesTotal.resize(VerticesIndex.size() * 3);
+	NormalsTotal.resize(VerticesIndex.size() * 3);
+	TextureTotal.resize(VerticesIndex.size() * 3);
+
 	if (!HasIndex)
 	{
 		for (unsigned int i = 0; i < VerticesIndex.size(); i++)
 		{
-			VerticesIndex[i * 3] = VerticesData[(unsigned int)VerticesIndex[i] * 3 - 3];
-			TextureIndex[i] = TextureData[(unsigned int)TextureIndex[i] * 3 - 3];
-			NormalsIndex[i] = NormalsData[(unsigned int)NormalsIndex[i] * 3 - 3];
+			VerticesTotal[i * 3] = VerticesData[(unsigned int)VerticesIndex[i] * 3 - 3];
+			VerticesTotal[i * 3 + 1] = VerticesData[(unsigned int)VerticesIndex[i] * 3 - 2];
+			VerticesTotal[i * 3 + 2] = VerticesData[(unsigned int)VerticesIndex[i] * 3 - 1];
+
+			TextureTotal[i * 3] = TextureData[(unsigned int)TextureIndex[i] * 3 - 3];
+			TextureTotal[i * 3 + 1] = TextureData[(unsigned int)TextureIndex[i] * 3 - 2];
+			TextureTotal[i * 3 + 2] = TextureData[(unsigned int)TextureIndex[i] * 3 - 1];
+
+			NormalsTotal[i * 3] = NormalsData[(unsigned int)NormalsIndex[i] * 3 - 3];
+			NormalsTotal[i * 3 + 1] = NormalsData[(unsigned int)NormalsIndex[i] * 3 - 2];
+			NormalsTotal[i * 3 + 2] = NormalsData[(unsigned int)NormalsIndex[i] * 3 - 1];
 		}
 	}
 	//获取输入路径
@@ -84,7 +100,7 @@ int main(int argc,char *argv[])
 
 	std::string FileType = ".GMesh";
 	std::string SaveFileName(FileName + FileType);
-	saveModel(SaveFileName.c_str(), &VerticesIndex, &TextureIndex, &NormalsIndex);
+	saveModel(SaveFileName.c_str(), &VerticesTotal, &TextureTotal, &NormalsTotal);
 
 	std::cout << "Complete!Now checking!" << std::endl;
 

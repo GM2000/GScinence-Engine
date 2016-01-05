@@ -3,7 +3,7 @@
 #include <fstream>
 #include <vector>
 
-void readOBJ(const char* FileName, std::vector<float>* VerticesData,std::vector<float>* NormalsData,std::vector<float>* TextureData, std::vector<float>* VerticesIndex,std::vector<float>* NormalsIndex,std::vector<float>* TextureIndex)
+void readOBJ(const char* FileName, std::vector<float>* VerticesData,std::vector<float>* NormalsData,std::vector<float>* TextureData, std::vector<unsigned int>* VerticesIndex,std::vector<unsigned int>* NormalsIndex,std::vector<unsigned int>* TextureIndex)
 {
 	//读取每行第一个词
 	char FirstWord[256];
@@ -148,17 +148,17 @@ void readOBJ(const char* FileName, std::vector<float>* VerticesData,std::vector<
 #ifdef _DEBUG
 				std::cout << "VI" << i << ":" << GetVI << " ";
 #endif
-				VerticesIndex->push_back((float)GetVI);
+				VerticesIndex->push_back(GetVI);
 
 #ifdef _DEBUG
 				std::cout << "NI" << i << ":" << GetTI << " ";
 #endif
-				NormalsIndex->push_back((float)GetTI);
+				TextureIndex->push_back(GetTI);
 
 #ifdef _DEBUG
 				std::cout << "TI" << i << ":" << GetNI << " ";
 #endif
-				TextureIndex->push_back((float)GetNI);
+				NormalsIndex->push_back(GetNI);
 			}
 #ifdef _DEBUG
 			std::cout << std::endl;

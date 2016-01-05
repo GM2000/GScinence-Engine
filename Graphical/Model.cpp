@@ -5,13 +5,9 @@
 
 bool model::loadModel(const char* FileName)
 {
-	std::ifstream LoadModel;
-	LoadModel.open(FileName, std::ios::binary);
+	FILE *LoadModel = fopen(FileName, "rb");
 
-	LoadModel.setf(LoadModel.fixed);
-	LoadModel.precision(4);
-
-	LoadModel >> ModelSize;
+	fread(&ModelSize, sizeof(unsigned int), 1, LoadModel);
 
 	VerticesData.resize(ModelSize);
 	TextureData.resize(ModelSize);
@@ -21,17 +17,17 @@ bool model::loadModel(const char* FileName)
 	for (unsigned int i = 0; i < ModelSize; i++)
 	{
 		//读取顶点
-		LoadModel.read((char*)&VerticesData[i],sizeof(float));
+		fread(&VerticesData[i], sizeof(unsigned int), 1, LoadModel);
 
 		//读取法线
-		LoadModel.read((char*)&NormalsData[i], sizeof(float));
+		fread(&NormalsData[i], sizeof(unsigned int), 1, LoadModel);
 
 		//读取纹理
-		LoadModel.read((char*)&TextureData[i], sizeof(float));
+		fread(&TextureData[i], sizeof(unsigned int), 1, LoadModel);
 	}
 
 	//关闭文件
-	LoadModel.close();
+	fclose(LoadModel);
 
 	return true;
 }
@@ -68,17 +64,17 @@ model::pointData::pointData(float VerticesData, float NormalsData, float Texture
 
 const void* model::getVerticesData()
 {
-	return &VerticesData.at(0);
+	return &VerticesData[0];
 }
 
 const void* model::getNormalsData()
 {
-	return &NormalsData.at(0);
+	return &NormalsData[0];
 }
 
 const void* model::getTextureData()
 {
-	return &TextureData.at(0);
+	return &TextureData[0];
 }
 
 unsigned int model::size()
