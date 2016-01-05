@@ -19,28 +19,13 @@ void saveModel(const char* FileName, std::vector<float>* VerticesIndex, std::vec
 	SaveGMESH << PointSize;
 	SaveGMESH << std::endl;
 
-	//写入顶点
+	//循环写入数据
 	for (unsigned int i = 0; i < PointSize; i++)
 	{
-		SaveGMESH << (VerticesIndex->at(i));
-		SaveGMESH << " ";
+		SaveGMESH.write((char*)&VerticesIndex->at(i),sizeof(float));
+		SaveGMESH.write((char*)&NormalsIndex->at(i), sizeof(float));
+		SaveGMESH.write((char*)&TextureIndex->at(i), sizeof(float));
 	}
-	SaveGMESH << std::endl;
 
-	//写入纹理
-	for (unsigned int i = 0; i < PointSize; i++)
-	{
-		SaveGMESH << TextureIndex->at(i);
-		SaveGMESH << " ";
-	}
-	SaveGMESH << std::endl;
-
-	//写入法线
-	for (unsigned int i = 0; i < PointSize; i++)
-	{
-		SaveGMESH << NormalsIndex->at(i);
-		SaveGMESH << " ";
-	}
-	SaveGMESH << std::endl;
 	SaveGMESH.close();
 }

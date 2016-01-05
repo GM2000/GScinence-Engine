@@ -8,3 +8,5 @@ typedef struct
 	const char*  FileName;
 	GLuint       Shader;
 } shaderInfo;
+
+int _loadShader(shaderInfo* Shaders);

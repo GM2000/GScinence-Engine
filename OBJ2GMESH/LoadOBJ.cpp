@@ -22,7 +22,7 @@ void readOBJ(const char* FileName, std::vector<float>* VerticesData,std::vector<
 	}
 
 	//设置精度
-	LoadOBJ.setf(LoadOBJ.fixed);
+	LoadOBJ.setf(LoadOBJ.scientific);
 	LoadOBJ.precision(4);
 
 	//循环

@@ -20,6 +20,10 @@ public:
 		pointData(float, float, float);
 	};
 
+	const void* getVerticesData();
+	const void* getNormalsData();
+	const void* getTextureData();
+
 	bool loadModel(const char*);
 
 	void clear();

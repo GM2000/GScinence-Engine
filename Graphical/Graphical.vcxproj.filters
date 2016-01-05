@@ -2,22 +2,19 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Graphical.h" />
-    <ClInclude Include="Shader.h">
-      <Filter>ShaderManager</Filter>
-    </ClInclude>
     <ClInclude Include="Model.h">
       <Filter>ResourcesManager\ModelManager</Filter>
     </ClInclude>
     <ClInclude Include="LoadTexture.h">
-      <Filter>ResourcesManager\TextureManager</Filter>
+      <Filter>ResourcesManager\MaterialManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>ResourcesManager\MaterialManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="RenderManager">
       <UniqueIdentifier>{c15fb0aa-a1e7-48a8-83b1-3579c6a819f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ShaderManager">
-      <UniqueIdentifier>{a2f23d27-c212-4881-9fe9-0bb959b40bfd}</UniqueIdentifier>
     </Filter>
     <Filter Include="ResourcesManager">
       <UniqueIdentifier>{a2c7f889-eb75-4643-aea2-895cb86be761}</UniqueIdentifier>
@@ -25,7 +22,7 @@
     <Filter Include="ResourcesManager\ModelManager">
       <UniqueIdentifier>{2a3ad936-70e6-4ebd-ae3a-cb30303d7a0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ResourcesManager\TextureManager">
+    <Filter Include="ResourcesManager\MaterialManager">
       <UniqueIdentifier>{54d09b3a-208f-4867-9d88-cfc53a2c80d2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -33,14 +30,14 @@
     <ClCompile Include="Init.cpp">
       <Filter>RenderManager</Filter>
     </ClCompile>
-    <ClCompile Include="LoadShader.cpp">
-      <Filter>ShaderManager</Filter>
-    </ClCompile>
     <ClCompile Include="LoadTexture.cpp">
-      <Filter>ResourcesManager\TextureManager</Filter>
+      <Filter>ResourcesManager\MaterialManager</Filter>
     </ClCompile>
     <ClCompile Include="Model.cpp">
       <Filter>ResourcesManager\ModelManager</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadShader.cpp">
+      <Filter>ResourcesManager\MaterialManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

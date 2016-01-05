@@ -17,21 +17,19 @@ bool model::loadModel(const char* FileName)
 	TextureData.resize(ModelSize);
 	NormalsData.resize(ModelSize);
 
-	//读取顶点
+	//循环读取文件
 	for (unsigned int i = 0; i < ModelSize; i++)
 	{
-		LoadModel >> VerticesData[i];
+		//读取顶点
+		LoadModel.read((char*)&VerticesData[i],sizeof(float));
+
+		//读取法线
+		LoadModel.read((char*)&NormalsData[i], sizeof(float));
+
+		//读取纹理
+		LoadModel.read((char*)&TextureData[i], sizeof(float));
 	}
-	//读取纹理
-	for (unsigned int i = 0; i < ModelSize; i++)
-	{
-		LoadModel >> TextureData[i];
-	}
-	//读取法线
-	for (unsigned int i = 0; i < ModelSize; i++)
-	{
-		LoadModel >> NormalsData[i];
-	}
+
 	//关闭文件
 	LoadModel.close();
 
@@ -67,6 +65,22 @@ model::pointData::pointData(float VerticesData, float NormalsData, float Texture
 	pointData::NormalsData = NormalsData;
 	pointData::TextureData = TextureData;
 }
+
+const void* model::getVerticesData()
+{
+	return &VerticesData.at(0);
+}
+
+const void* model::getNormalsData()
+{
+	return &NormalsData.at(0);
+}
+
+const void* model::getTextureData()
+{
+	return &TextureData.at(0);
+}
+
 unsigned int model::size()
 {
 	return ModelSize;

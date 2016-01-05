@@ -4,13 +4,13 @@
 const char* _readShader(const char* FileName);
 
 //加载一个顶点shader
-bool _loadShader(shaderInfo* Shaders)
+int _loadShader(shaderInfo* Shaders)
 {
 	//检测是否为空
 	if (Shaders == NULL)
 	{
 		std::cerr << "[WARNING]:Shader is empty!" << std::endl;
-		return false;
+		return 0;
 	}
 
 	//创建着色器程序
@@ -35,7 +35,7 @@ bool _loadShader(shaderInfo* Shaders)
 			{
 				glDeleteShader(Shader);
 			}
-			return false;
+			return 0;
 		}
 
 		//绑定源码
@@ -69,7 +69,7 @@ bool _loadShader(shaderInfo* Shaders)
 
 		++Entry;
 	}
-	return true;
+	return Program;
 }
 
 //读取Shader程序
